@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,6 +8,7 @@ import swal from "sweetalert";
 import ModalLoading from "../components/ModalLoading";
 
 import "./Login.css";
+import { verifyLogin } from "../utils/verifyLogin";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -50,6 +51,14 @@ const Login = () => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    const loginValid = verifyLogin();
+
+    if (loginValid) {
+      navigate("/pedidos");
+    }
+  }, []);
 
   const validFields = () => {
     if (email == "" || email == null || password == "" || password == null) {
