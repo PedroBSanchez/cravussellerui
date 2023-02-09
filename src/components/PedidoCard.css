@@ -1,0 +1,6 @@
+.pedido-card {
+  background: radial-gradient(#292828, #252527);
+  border-radius: 10px;
+  border: none;
+  box-shadow: 5px 5px 5px gray;
+}

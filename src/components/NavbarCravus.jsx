@@ -28,14 +28,14 @@ const NavbarCravus = () => {
           <Nav className="me-auto">
             <Nav.Link
               onClick={() => {
-                //handleNavigate()
+                handleNavigate("pedidos");
               }}
             >
               Venda
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                //handleNavigate()
+                handleNavigate("dia");
               }}
             >
               Pedidos

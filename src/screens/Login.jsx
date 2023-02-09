@@ -52,9 +52,8 @@ const Login = () => {
       });
   };
 
-  useEffect(() => {
-    const loginValid = verifyLogin();
-
+  useEffect(async () => {
+    const loginValid = await verifyLogin();
     if (loginValid) {
       navigate("/pedidos");
     }

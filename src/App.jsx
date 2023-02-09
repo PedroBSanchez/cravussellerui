@@ -6,6 +6,7 @@ import Login from "./screens/Login";
 import Pedidos from "./screens/Pedidos";
 
 import "./App.css";
+import Dia from "./screens/Dia";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/pedidos" element={<Pedidos />} />
+        <Route path="/dia" element={<Dia />} />
       </Routes>
     </BrowserRouter>
   );
