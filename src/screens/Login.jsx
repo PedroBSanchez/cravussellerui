@@ -53,10 +53,10 @@ const Login = () => {
   };
 
   useEffect(async () => {
-    const loginValid = await verifyLogin();
-    if (loginValid) {
-      navigate("/pedidos");
-    }
+    // const loginValid = await verifyLogin();
+    // if (loginValid) {
+    //   navigate("/pedidos");
+    // }
   }, []);
 
   const validFields = () => {
