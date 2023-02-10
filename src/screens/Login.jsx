@@ -52,12 +52,12 @@ const Login = () => {
       });
   };
 
-  useEffect(async () => {
-    // const loginValid = await verifyLogin();
-    // if (loginValid) {
-    //   navigate("/pedidos");
-    // }
-  }, []);
+  // useEffect(() => {
+  //   // const loginValid = await verifyLogin();
+  //   // if (loginValid) {
+  //   //   navigate("/pedidos");
+  //   // }
+  // }, []);
 
   const validFields = () => {
     if (email == "" || email == null || password == "" || password == null) {
