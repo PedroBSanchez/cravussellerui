@@ -25,16 +25,16 @@ const ModalSendWpp = (props) => {
     if (props.pedido != undefined) {
       const dataFormatada = `${dataPedido.toLocaleDateString()} ${dataPedido.getHours()}:${dataPedido.getMinutes()}:${dataPedido.getSeconds()}`;
 
-      let msg = `${props?.pedido?.city} - ${props?.pedido?.client} \nData: ${dataFormatada} \n\nProdutos: `;
+      let msg = `${props?.pedido?.city} - ${props?.pedido?.client} %0aData: ${dataFormatada} %0a%0aProdutos: `;
       props?.pedido.items.forEach((item) => {
         msg =
           msg +
-          `\n  - ${item.description} ${numberToReal(item.value)} - Unidades: ${
+          `%0a  - ${item.description} ${numberToReal(item.value)} - Unidades: ${
             item.amount
           }`;
       });
 
-      msg = msg + `\n\nTotal pedido: ${numberToReal(props?.pedido.total)}`;
+      msg = msg + `%0a%0aTotal pedido: ${numberToReal(props?.pedido.total)}`;
       sendWhatsapp(setPhoneWithoutMask(), msg);
     }
   };
