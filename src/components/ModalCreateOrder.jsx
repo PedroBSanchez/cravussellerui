@@ -32,6 +32,8 @@ const ModalCreateOrder = (props) => {
     { code: 3, description: "Xesque", value: 30.5 },
   ]);
 
+  const [allClients, setAllClients] = useState([]);
+
   const getItemsOrders = async () => {
     const token = localStorage.getItem("tokenApi");
     await axios
@@ -48,9 +50,27 @@ const ModalCreateOrder = (props) => {
       });
   };
 
+  const getClients = async () => {
+    const token = localStorage.getItem("tokenApi");
+
+    await axios
+      .get(`${process.env.REACT_APP_BASE_URL}/api/clients/getall`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setAllClients(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     //Pegar all items
     getItemsOrders();
+    getClients();
   }, []);
 
   const handleAddItem = () => {
@@ -142,6 +162,8 @@ const ModalCreateOrder = (props) => {
       });
     }
 
+    const clientObject = JSON.parse(newClient);
+
     newItems.forEach((element) => {
       arrayItems.push({ code: element.code, amount: parseInt(element.amount) });
     });
@@ -155,7 +177,7 @@ const ModalCreateOrder = (props) => {
       },
       data: {
         city: newCity,
-        client: newClient,
+        client: clientObject?._id,
         items: arrayItems,
       },
     };
@@ -238,13 +260,29 @@ const ModalCreateOrder = (props) => {
             </div>
             <div className="col">
               <Form.Label>Cliente</Form.Label>
-              <Form.Control
+              <Form.Label>Cliente</Form.Label>
+              <Form.Select
                 id="clienteInput"
-                type="text"
                 onChange={(e) => {
-                  setNewClient(e.target.value);
+                  setNewClient(e.currentTarget.value);
                 }}
-              />
+              >
+                <option disabled selected value={null}>
+                  Selecione um cliente
+                </option>
+                {allClients.map((element, index) => {
+                  let valueObject = {
+                    _id: element?._id,
+                    name: element?.name,
+                    phone: element?.phone,
+                  };
+                  return (
+                    <option key={index} value={JSON.stringify(valueObject)}>
+                      {element?.name}
+                    </option>
+                  );
+                })}
+              </Form.Select>
             </div>
           </div>
           <div className="row mt-3">
