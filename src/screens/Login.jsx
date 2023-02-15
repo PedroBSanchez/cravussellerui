@@ -8,7 +8,6 @@ import swal from "sweetalert";
 import ModalLoading from "../components/ModalLoading";
 
 import "./Login.css";
-import { verifyLogin } from "../utils/verifyLogin";
 
 const Login = () => {
   const [email, setEmail] = useState("");

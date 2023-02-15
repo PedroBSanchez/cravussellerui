@@ -42,9 +42,15 @@ const PedidoCard = (props) => {
           )} - Unidades: ${item.amount}`;
       });
       msg = msg + `%0a%0aTotal pedido: ${numberToReal(props?.pedido.total)}`;
-      console.log(msg);
-      console.log(props?.pedido.client?.phone);
-      sendWhatsapp(props?.pedido.client?.phone, msg);
+
+      if (
+        props?.pedido.client.name == "Outros" &&
+        props?.pedido.client.phone == "#"
+      ) {
+        setWppModalShow(true);
+      } else {
+        sendWhatsapp(props?.pedido.client?.phone, msg);
+      }
     }
   };
 
@@ -88,6 +94,11 @@ const PedidoCard = (props) => {
           </div>
         </div>
       </div>
+      <ModalSendWpp
+        show={wppModalShow}
+        onHide={() => setWppModalShow(false)}
+        pedido={props?.pedido}
+      />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { AiFillPlusCircle } from "react-icons/ai";
 import { Button } from "react-bootstrap";
@@ -6,9 +6,24 @@ import { Button } from "react-bootstrap";
 import NavbarCravus from "../components/NavbarCravus";
 import ModalCreateOrder from "../components/ModalCreateOrder";
 import "./Pedidos.css";
+import { useNavigate } from "react-router-dom";
+import { verifyToken } from "../utils/verifyToken";
 
 const Pedidos = () => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    validateToken();
+  }, []);
+
+  const validateToken = async () => {
+    await verifyToken().then((validToken) => {
+      if (!validToken) {
+        navigate("/");
+      }
+    });
+  };
 
   return (
     <>

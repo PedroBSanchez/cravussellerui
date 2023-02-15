@@ -20,12 +20,13 @@ const ModalSendWpp = (props) => {
         timer: 2500,
       });
     }
+    console.log(props.pedido);
     const dataPedido = new Date(props?.pedido.createdAt);
 
     if (props.pedido != undefined) {
       const dataFormatada = `${dataPedido.toLocaleDateString()} ${dataPedido.getHours()}:${dataPedido.getMinutes()}:${dataPedido.getSeconds()}`;
 
-      let msg = `${props?.pedido?.city} - ${props?.pedido?.client} %0aData: ${dataFormatada} %0a%0aProdutos: `;
+      let msg = `${props?.pedido?.city} - ${props?.pedido?.client.name} %0aData: ${dataFormatada} %0a%0aProdutos: `;
       props?.pedido.items.forEach((item) => {
         msg =
           msg +

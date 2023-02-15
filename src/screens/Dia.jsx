@@ -5,8 +5,11 @@ import axios from "axios";
 import "./Dia.css";
 import ModalLoading from "../components/ModalLoading";
 import PedidoCard from "../components/PedidoCard";
+import { verifyToken } from "../utils/verifyToken";
+import { useNavigate } from "react-router-dom";
 
 const Dia = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [pedidosDia, setPedidosDia] = useState([]);
 
@@ -31,8 +34,17 @@ const Dia = () => {
   };
 
   useEffect(() => {
+    validateToken();
     getPedidosDia();
   }, []);
+
+  const validateToken = async () => {
+    await verifyToken().then((validToken) => {
+      if (!validToken) {
+        navigate("/");
+      }
+    });
+  };
 
   return (
     <>
