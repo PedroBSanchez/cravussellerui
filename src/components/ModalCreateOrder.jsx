@@ -132,14 +132,23 @@ const ModalCreateOrder = (props) => {
   const handleRemoveItem = (index) => {
     //slice(index, 1)
 
-    setOrderPrice(
-      orderPrice - newItems[index].value * parseInt(newItems[index].amount)
-    );
-    let arrayRemoveItem = newItems;
+    swal({
+      title: `Deseja remover ${newItems[index].description} do pedido?`,
+      icon: "warning",
+      dangerMode: true,
+      cancel: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        setOrderPrice(
+          orderPrice - newItems[index].value * parseInt(newItems[index].amount)
+        );
+        let arrayRemoveItem = newItems;
 
-    arrayRemoveItem.splice(index, 1);
+        arrayRemoveItem.splice(index, 1);
 
-    setNewItems(arrayRemoveItem);
+        setNewItems(arrayRemoveItem);
+      }
+    });
   };
 
   const handleNewOrder = async () => {
