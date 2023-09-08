@@ -45,10 +45,10 @@ const Clients = () => {
       <NavbarCravus />
       <div className="container">
         <div className="row mt-3">
-          <div className="col-offset-1 col-1">
+          <div className="col-offset-1 col-3">
             <h4 className="title-text">Clientes</h4>
           </div>
-          <div className="col-1">
+          <div className="col">
             <button
               className="btn btn-success"
               onClick={() => {
@@ -61,7 +61,7 @@ const Clients = () => {
         </div>
         <hr />
         <div className="row justify-content-center mt-2">
-          <div className="col-4">
+          <div className="col">
             <div className="client-table-container">
               <table className="table table-warning table-striped">
                 <thead>

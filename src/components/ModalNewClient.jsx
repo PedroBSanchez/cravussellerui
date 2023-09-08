@@ -152,12 +152,12 @@ const ModalNewClient = (props) => {
             </div>
           </div>
           <div className="row mt-3 text-right justify-content-end">
-            <div className="col-2">
+            <div className="col-3">
               <button className="btn btn-danger" onClick={props.onHide}>
                 Cancelar
               </button>
             </div>
-            <div className="col-2">
+            <div className="col-3">
               <button className="btn btn-success" onClick={handleNewClient}>
                 Salvar
               </button>
