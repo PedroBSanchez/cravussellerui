@@ -7,14 +7,17 @@ import Pedidos from "./screens/Pedidos";
 
 import "./App.css";
 import Dia from "./screens/Dia";
+import Clients from "./screens/Clients";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="*" element={<Login />} />
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/dia" element={<Dia />} />
+        <Route path="/clientes" element={<Clients />} />
       </Routes>
     </BrowserRouter>
   );

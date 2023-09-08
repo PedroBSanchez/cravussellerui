@@ -40,6 +40,13 @@ const NavbarCravus = () => {
             >
               Pedidos
             </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                handleNavigate("clientes");
+              }}
+            >
+              Clientes
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
