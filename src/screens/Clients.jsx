@@ -95,6 +95,7 @@ const Clients = () => {
       <ModalNewClient
         show={showModalNewClient}
         onHide={() => setShowModalNewClient(false)}
+        getClients={getClients}
       />
     </>
   );
